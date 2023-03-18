@@ -76,7 +76,14 @@ class Neural_Network:
         return [self.list_neural[-1][0].get_output(), self.list_neural[-1][1].get_output()]
 
 
-print(Neural_Network([1, 2, 3]).get_output())
+def get_cost_value(actual_value, target_value):
+    return - (target_value * math.log(actual_value) + (1 - target_value) * math.log(1 - actual_value))
 
+def get_loss_value(number_tests, cost_value):
+    sum = 0
+    for i in range(number_tests):
+        sum += cost_value[i]
+    
+    return sum / number_tests
 
 
